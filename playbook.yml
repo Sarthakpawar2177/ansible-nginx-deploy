@@ -1,0 +1,14 @@
+- name: Install nginx and deploy HTML
+  hosts: web
+  become: yes
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Upload HTML page
+      copy:
+        src: html/index.html
+        dest: /var/www/html/index.html
